@@ -6,7 +6,7 @@ This is a project to display bike availability for Dublin Bikes, a city bikes sc
 
 Clone the repository using 
 
-    git clone https://github.com/rosannahanly/Group8Project.git
+    git clone https://github.com/sophieheseltine/DublinBikes.git
 
 Navigate into Group8Project/dublin_bikes
     
