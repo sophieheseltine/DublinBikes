@@ -1,0 +1,1 @@
+*/5 * * * * /usr/bin/python /home/ec2-user/Group8Project/dublin_bikes/historic_data.py

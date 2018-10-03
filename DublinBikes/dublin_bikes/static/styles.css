@@ -1,0 +1,301 @@
+h2, h4 {
+	font-family: "HelveticaNeue-Thin";
+	font-size: 20px;
+}
+
+h4 {
+	color: white;
+}
+
+h3 {
+	font-family: "HelveticaNeue-Thin";
+	font-size: 15px;
+}
+
+header {
+	color: white;
+	background-color: #2A6DFC;
+	padding: 10px;
+	padding-left: 20px;
+}
+
+#weather {
+	text-align: right;
+	font-family: "HelveticaNeue-Thin";
+	font-size: 20px;
+}
+
+.bg {
+	/* The image used */
+	background-image: url(images/Just-Eat-Black_White.jpg);
+	/* Center and scale the image nicely */
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: auto;
+	background-attachment: fixed;
+}
+
+.jumbotron {
+	background-color: #2A6DFC;
+	color: #ffffff;
+}
+
+.dropdown {
+	align-content: left;
+	color: #2A6DFC;
+}
+
+#infoBox {
+	font-size: 18px;
+	width: 100%;
+	height: auto;
+	list-style-type: none;
+	text-decoration: none;
+	text-align: center;
+    font-family: "HelveticaNeue-Thin";
+}
+
+#infoBox li {
+	border-right: 2px solid #bbb;
+	text-decoration: none;
+    font-family: "HelveticaNeue-Thin";
+}
+
+#userOptions {
+	width: 85%;
+	margin: 5%;
+	background-color: rgba(255, 255, 255, 0.7);
+	overflow: auto;
+	padding: 5%;
+}
+
+#userEntertainment {
+	background-color: #C8C6C6;
+	height: auto;
+	margin: auto;
+	margin-top: 0;
+}
+
+th, marquee {
+	font-family: "HelveticaNeue-Thin";
+}
+
+#StationIName, #findStationsNearby {
+	margin-top: 15%;
+}
+
+#directionDropdown {
+	margin-top: 5%;
+}
+
+#StationIName, #daySelect, #start, #end, #predictionStation, #day, #time {
+	background-color: #2A6DFC;
+	height: 50px;
+	text-align: center;
+	color: white;
+	padding: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	border: none;
+	width: 90%;
+}
+
+#submit_btn {
+    background-color: #2A6DFC;
+	height: 30px;
+	text-align: center;
+	color: white;
+	padding: 5px;
+	font-size: 14px;
+	cursor: pointer;
+	border: none;
+	width: 50%;
+    border-radius: 10px;
+}
+
+table, th, td {
+	border: 1px solid #B3B3B3;
+	border-collapse: collapse;
+}
+
+.btn:hover, #StationIName:hover {
+	background-color: #4863A0;
+}
+
+.btn {
+	color: white;
+	background-color: #2A6DFC;
+}
+
+#map {
+	border: 1px solid #848482;
+}
+
+a:link, a:visited {
+	color: #151B54;
+}
+
+a:hover {
+	color: #3BB9FF;
+	text-decoration: none;
+}
+
+a:active {
+	color: #151B54;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 200px);
+	padding: 5px;
+	grid-gap: 5px;
+}
+
+.grid-item {
+	background-color: #F3F2F2;
+	padding: 0;
+	text-align: center;
+}
+
+#elevationChartName {
+	text-align: center;
+	text-decoration-style: solid;
+	padding: 20px;
+	color: white;
+}
+
+elevation_chart {
+	color: #2A6DFC;
+}
+
+ul {
+	width: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	align-content: center;
+}
+
+li {
+	display: inline-block;
+    font-family: "HelveticaNeue-Thin";
+}
+
+#findStationsNearby, #switchMapButton {
+	height: 50px;
+	width: 100%;
+}
+
+#myChart {
+	float: left;
+}
+
+#weatherInfo {
+	align-content: center;
+	width: 100%;
+	margin-top: 3%;
+	list-style-type: none;
+	text-decoration: none;
+	padding-left: 10%;
+    
+}
+
+#weatherInfo li {
+	text-align: center;
+	float: left;
+	border-right: 2px solid #bbb;
+	text-decoration: none;
+    font-family: "HelveticaNeue-Thin";
+}
+
+li:last-child {
+	border-right: none;
+}
+
+li:first-child {
+	margin-left: 10%;
+}
+
+.NearbyStationTable {
+	border-collapse: collapse;
+}
+
+.NearbyStationTable th {
+	background-color: #2A6DFC;
+	color: white;
+	text-decoration: none;
+}
+
+.NearbyStationTable tr, td {
+	background-color: rgba(255, 255, 255, 0.5);
+	;
+}
+
+#journeyPlanner {
+	text-align: left;
+}
+
+.modal-header {
+	background-color: #2A6DFC;
+	color: white;
+}
+
+.close {
+	color: white;
+}
+
+.close:hover {
+	color: red;
+}
+
+
+#legend {
+	text-align: center;
+	padding: 1%;
+	background-color: #F1F4F5;
+}
+
+#textForecast {
+	text-align: center;
+	text-transform: capitalize;
+	color: red;
+}
+
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  background-color:#C8C6C6;
+  height: 1px;
+}
+
+heading {
+    font-family: "HelveticaNeue-Thin";
+    text-align: left;
+}
+body {
+	background-color: #C8C6C6;
+    font-family: "HelveticaNeue-Thin";
+}
+
+#textForecast {
+	text-align: center;
+	text-transform: capitalize;
+	color: red;
+}
+#success{
+    text-align: center;
+    background-color: rgba(255,255,255,0.8);
+    font-size: 18px;
+}
+#direction-panel{
+    background-color: white;
+    align-content: center;
+    text-align: center;
+}
+#elevationChartName{
+    background-color: white;
+    color: black;
+    display: none;
+}

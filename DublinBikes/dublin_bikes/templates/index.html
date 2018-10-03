@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!--Basics -->
+	<title>Dublin Bikes</title>
+	<meta charset="utf-8"><!-- To make mobile adaptable -->
+	<meta content="width=device-width, initial-scale=1" name="viewport"><!-- Bootstrap -->
+	<!-- Latest compiled and minified CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"><!-- jQuery library -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
+	</script>
+	<script src="https://www.gstatic.com/charts/loader.js" type="text/javascript">
+	</script><!--Links to our javascript functions and CSS styleshtet-->
+	<link href="..//static/styles.css" rel="stylesheet" type="text/css">
+	<script src="..//static/js/my_jquery_functions.js">
+	</script><!-- I think this is the same as the bootstrap link above. Nothing happens when removed. -->
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+	</script>
+</head>
+<body>
+    
+    
+	<!--Header containing Name, photo and weather info -->
+	
+    <header>
+		<h1 class="display-4">Dublin Bikes</h1>
+		<div id="weather"></div>
+	</header>
+	<div id="map" style="width:100%;height:400px;"></div>
+	<div id="legend"></div>
+    
+    
+    <!--Row contains dropdown, info box and map -->
+	
+    <div class="bg">
+		<div class='col-sm-14'>
+			<div>
+				<button class="btn btn-block" data-target="#myModal" data-toggle="modal" id="switchMapButton" type="button">Switch Map View</button>
+			</div>
+		</div>
+		<div id='userOptions'>
+			<div class='row'>
+				<marquee></marquee>
+				<h2><marquee><b>WELCOME TO DUBLIN BIKES</b>&#x1F6B2;&#x1F6B2;&#x1F6B2;Did you know?? It is 20 times cheaper to maintain a bicycle than a car!&#x1F6B2;&#x1F6B2;&#x1F6B2; There have been 22,417,162 journeys made on Dublin Bikes since its launch in 2009&#x1F6B2;&#x1F6B2;&#x1F6B2; Your Dublin Bike journey is free for the first 30 minutes&#x1F6B2;&#x1F6B2;&#x1F6B2; An annual subscription to Dublin Bikes only costs €25. That means serious bang for your buck! And you're saving the environment too &#x1F6B2;&#x1F6B2;&#x1F6B2; There are 10 million bicycles in Beijing</marquee></h2>
+			</div>
+			<div class='row'>
+				<div class='col-sm-6' id='stationInfo'>
+					<div class="dropdown" id="stationDropdown">
+						<select id="StationIName">
+							<option value="">
+								Select a Station
+							</option>
+						</select>
+					</div>
+				</div><br>
+				<div class='col-sm-6'>
+					<button class="btn btn-block" id="findStationsNearby">Find stations near me</button><br>
+				</div>
+				<div class='row'>
+					<div class='col-sm-6'>
+						<div id="graph-container">
+							<canvas id="myChart"></canvas>
+							<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js">
+							</script>
+						</div><br>
+						<br>
+					</div>
+					<div class='col-sm-6'>
+						<div class='row'>
+							<div id="infoBox"></div>
+						</div>
+						<div class='row'>
+							<br>
+							
+							<div id='weatherInfo'></div><br>
+							
+							<div id='textForecast'></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-sm-12' id='journeyPlanner'>
+					<h2><b>Plan your journey</b></h2>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-sm-6'>
+					<div id="directionDropdown">
+						<h2>Get Directions:</h2><br>
+						<select id="start">
+							<option value="">
+								Select a Starting Station
+							</option>
+						</select>
+						<hr>
+						<select id="end">
+							<option value="">
+								Select a Destination Station
+							</option>
+						</select>
+					</div>
+				</div>
+				<div class='col-sm-6'>
+					<br>
+					<h2>Get a prediction of available bikes:</h2><br>
+					<div id="predictionDropdown">
+						<form action="/getModel" class="form-inline" method="post">
+							<!--<div class="form-group">-->
+							<!--<form name="form" action = ''>-->
+							<div class="input-group">
+								<select class="selectpicker form-control" id="predictionStation" name="predictionStation">
+									<option value="">
+										Select a Station
+									</option>
+								</select>
+                                <hr>
+								<select class="selectpicker form-control" id="day" name="day">
+									<option value="">
+										Select a Day
+									</option>
+								</select>
+								<hr>
+								<select class="selectpicker form-control" id="time" name="time">
+									<option value="">
+										Select a Time
+									</option>
+								</select>
+								<hr>
+								<button class="btn-default" id='submit_btn' name="submit" type="submit" value="Send">Predict Availability</button>
+							</div>
+						</form>
+						</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-sm-6'>
+					<div id="direction-panel"></div>
+				</div>
+				<div class='col-sm-6'>
+                    <br>
+                     <div id='success'></div>
+                        <div id='error'></div>
+					<div id="elevationChartName">"Elevation along this Route (m)"</div>
+					<script>// Load the Visualization API and the columnchart package.
+				google.charts.load('visualization', '1', {packages: ['columnchart']});
+					</script>
+					<div id="elevation_chart"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+    
+    <!-- Row containing video and Twitter feed -->
+	
+    <div id="userEntertainment">
+		<div class="row">
+			<div class='col-sm-6'>
+				<h4>Take a break and enjoy this Dublin cycling story!</h4>
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe allowfullscreen frameborder="0" height="315" src="https://www.youtube.com/embed/ujbiR8LwwLM" width="560"></iframe>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="twitter">
+					<h4>Keep up to date with the latest weather news from Met Eireann</h4><a class="twitter-timeline" data-height="415" data-width="500" href="https://twitter.com/MetEireann?ref_src=twsrc%5Etfw">Tweets by MetEireann</a> 
+					<script async charset="utf-8" src="https://platform.twitter.com/widgets.js">
+					</script>
+				</div>
+			</div>
+		</div>
+        
+        
+        <!-- Row cotaining links to websites -->
+		
+        <div class='row'>
+			<div class='col-sm-12'>
+				<div class="grid-container">
+					<div class="grid-item">
+						<a href="http://www.dublinbikes.ie/How-does-it-work/Using-the-Bikes"><img height="150" src="..//static/images/download.jpeg" width="100%"><br>
+						<br>
+						<h2>How does it work?</h2></a>
+					</div>
+					<div class="grid-item">
+						<img height="150" src="..//static/images/Opening-Hours-JEDB_visuel_city.jpg" width="100%"><br>
+						<br>
+						<h2>Station Opening Times</h2>
+					</div>
+					<div class="grid-item">
+						<a href="https://www.leapcard.ie/en/NavigationPages/LoginSelection.aspx"><img height="150" src="https://pbs.twimg.com/profile_images/818402831019495424/zyQQ6Ot__400x400.jpg" width="100%"><br>
+						<br>
+						<h2>Top up your Leap Card here!</h2></a>
+					</div>
+					<div class="grid-item">
+						<a href="http://www.dublinbikes.ie/Subscription/Annual-Card2/Annual-Card-Holder"><img height="150" src="..//static/images/download.png" width="100%"><br>
+						<br>
+						<h2>Subscribe for an Annual Card with Dublin Bikes for just €25 a year!</h2></a>
+					</div>
+					<div class="grid-item">
+						<a href="http://www.rsa.ie/RSA/Road-Safety/Campaigns/Current-road-safety-campaigns/Cycle-Smart-Cycle-Safe/"><img height="150" src="..//static/images/405166839.jpg" width="100%"><br>
+						<br>
+						<h2>Check out the RSA for some tips on keeping safe on your bike in the city</h2></a>
+					</div>
+					<div class="grid-item">
+						<a href="http://www.dublinbikes.ie/Magazine/News"><img height="150" src="..//static/images/downloadnews.png" width="100%"><br>
+						<br>
+						<h2>Dublin Bikes News</h2></a>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+        
+        <!-- Modal -->
+		
+        <div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2 class="modal-title"><b>I want to:</b></h2><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-footer"><button class="btn btn-primary" data-dismiss="modal" id="bikes" type="button">Rent a bike</button> <img height="130" src="..//static/images/dublin-bikes2.png" width="47%"></div>
+					<div class="modal-footer"><button class="btn btn-primary" id="stands" type="button">Return a bike</button><img height="150" src="..//static/images/Stands_visuel_listitem.png" width="45%"></div>
+				</div>
+			</div>
+		</div>
+        
+        
+        <!-- Google API key -->
+		
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1EwRxWN3fLygyJu8XtDGt3aQAGIEZhTs&libraries=geometry" type="text/javascript">
+		</script>
+        
+        
+        <!-- Footer -->
+		
+        <footer class='jumbotron'>
+			<div class="row">
+				<div class="col-sm-6">
+					<p>Created by Sophie Heseltine, Rosanna Hanly and Eimear Galligan</p>
+					<p>Data supplied by <a href="https://developer.jcdecaux.com/#/home">JCDecaux</a></p><a href="http://www.dublinbikes.ie/">Dublin Bikes Official Website</a>
+				</div>
+				<div class="col-sm-6">
+					<br>
+					<p>Proudly supported by</p><br>
+					<a href="http://www.dublincity.ie/"><img src="..//static/images/dcc.png" width="300px"></a> <a href="https://www.just-eat.ie/"><img height="150px" src="..//static/images/4311-2285ba46721a961d5545d0bb3400a588.png" width="130px"></a>
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>

@@ -1,0 +1,2 @@
+recursive-include dublin_bikes/templates *
+recursive-include dublin_bikes/static *
