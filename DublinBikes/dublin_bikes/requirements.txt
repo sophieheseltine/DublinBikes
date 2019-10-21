@@ -47,6 +47,6 @@ smmap==0.9.0
 SQLAlchemy==1.2.6
 systeminfo==0.1
 urllib3==1.22
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 whichcraft==0.4.1
 wrapt==1.10.11
