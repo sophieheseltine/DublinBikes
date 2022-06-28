@@ -1,4 +1,4 @@
-arrow==0.12.1
+arrow==0.15.1
 attrs==17.4.0
 awscli==1.14.32
 binaryornot==0.4.4
